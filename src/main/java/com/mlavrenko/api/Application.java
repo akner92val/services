@@ -1,4 +1,4 @@
-package com.mlavrenko;
+package com.mlavrenko.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
