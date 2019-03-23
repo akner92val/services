@@ -1,4 +1,4 @@
-package com.mlavrenko;
+package com.mlavrenko.api;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

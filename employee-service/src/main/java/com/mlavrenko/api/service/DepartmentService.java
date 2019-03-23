@@ -6,7 +6,10 @@ import com.mlavrenko.api.repository.DepartmentRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
+@Transactional
 public class DepartmentService {
     private final DepartmentRepository departmentRepository;
 
