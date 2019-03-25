@@ -1,6 +1,8 @@
 package com.mlavrenko.api.dto;
 
-public class DepartmentDTO {
+import org.springframework.hateoas.RepresentationModel;
+
+public class DepartmentDTO extends RepresentationModel {
     private Long id;
     private String name;
 

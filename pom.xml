@@ -14,9 +14,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.mlavrenko</groupId>
-    <artifactId>com.mlavrenko</artifactId>
+    <artifactId>services</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>com.mlavrenko</name>
+    <name>services</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

@@ -1,9 +1,11 @@
 package com.mlavrenko.api.dto;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import java.util.Date;
 import java.util.UUID;
 
-public class EmployeeDTO {
+public class EmployeeDTO extends RepresentationModel {
     private UUID id;
     private String email;
     private String fullName;
