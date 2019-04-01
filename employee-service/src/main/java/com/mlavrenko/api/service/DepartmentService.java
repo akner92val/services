@@ -1,16 +1,12 @@
 package com.mlavrenko.api.service;
 
-import com.mlavrenko.api.client.DepartmentApi;
 import com.mlavrenko.api.domain.Department;
 import com.mlavrenko.api.dto.DepartmentDTO;
 import com.mlavrenko.api.repository.DepartmentRepository;
+import java.util.Optional;
+import javax.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
-
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Service
 @Transactional
@@ -23,9 +19,7 @@ public class DepartmentService {
 
     public DepartmentDTO createDepartment(DepartmentDTO departmentDTO) {
         Department department = convertToDomain(departmentDTO);
-        DepartmentDTO saved = convertToDTO(departmentRepository.save(department));
-        saved.add(linkTo(methodOn(DepartmentApi.class).create(departmentDTO)).withSelfRel());
-        return saved;
+        return convertToDTO(departmentRepository.save(department));
     }
 
     private DepartmentDTO convertToDTO(Department department) {
@@ -42,5 +36,9 @@ public class DepartmentService {
         Department department = new Department();
         BeanUtils.copyProperties(departmentDTO, department);
         return department;
+    }
+
+    Optional<Department> getById(Long id) {
+        return departmentRepository.findById(id);
     }
 }

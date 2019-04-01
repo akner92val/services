@@ -1,6 +1,8 @@
 package com.mlavrenko.api.config;
 
-import com.mlavrenko.api.domain.Employee;
+import com.mlavrenko.api.notification.Message;
+import java.util.HashMap;
+import java.util.Map;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.context.annotation.Bean;
@@ -10,14 +12,11 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @Configuration
 public class KafkaConfiguration {
 
     @Bean
-    public ProducerFactory<String, Employee> producerFactory() {
+    public ProducerFactory<String, Message> producerFactory() {
         Map<String, Object> config = new HashMap<>();
 
         config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
@@ -29,7 +28,7 @@ public class KafkaConfiguration {
 
 
     @Bean
-    public KafkaTemplate<String, Employee> kafkaTemplate() {
+    public KafkaTemplate<String, Message> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 }
