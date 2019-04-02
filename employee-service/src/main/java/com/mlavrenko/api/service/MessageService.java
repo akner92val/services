@@ -12,6 +12,6 @@ public class MessageService {
     }
 
     public void sendMessage(Message message) {
-        kafkaEventProducer.sendMessage("topic", message, Optional.empty());
+        kafkaEventProducer.sendMessage("EmployeeEvent", message, Optional.empty());
     }
 }
