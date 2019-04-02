@@ -1,5 +1,5 @@
 package com.mlavrenko.api.notification;
 
-public enum Status {
+public enum EmployeeStatus {
     CREATED, UPDATED, DELETED
 }

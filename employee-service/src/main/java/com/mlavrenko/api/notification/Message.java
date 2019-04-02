@@ -4,9 +4,9 @@ import java.util.UUID;
 
 public class Message {
     private UUID uuid;
-    private Status status;
+    private EmployeeStatus status;
 
-    public Message(UUID uuid, Status status) {
+    public Message(UUID uuid, EmployeeStatus status) {
         this.uuid = uuid;
         this.status = status;
     }
@@ -15,7 +15,7 @@ public class Message {
         return uuid;
     }
 
-    public Status getStatus() {
+    public EmployeeStatus getStatus() {
         return status;
     }
 }

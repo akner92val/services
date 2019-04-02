@@ -5,7 +5,7 @@ import com.mlavrenko.api.domain.Employee;
 import com.mlavrenko.api.dto.DepartmentDTO;
 import com.mlavrenko.api.dto.EmployeeDTO;
 import com.mlavrenko.api.notification.Message;
-import com.mlavrenko.api.notification.Status;
+import com.mlavrenko.api.notification.EmployeeStatus;
 import com.mlavrenko.api.repository.EmployeeRepository;
 import java.util.UUID;
 import javax.persistence.EntityNotFoundException;
@@ -30,7 +30,7 @@ public class EmployeeService {
     public EmployeeDTO createEmployee(@Valid EmployeeDTO employeeDTO) {
         Employee employee = convertToDomain(employeeDTO);
         Employee saved = employeeRepository.save(employee);
-        messageService.sendMessage(new Message(saved.getUuid(), Status.CREATED));
+        messageService.sendMessage(new Message(saved.getUuid(), EmployeeStatus.CREATED));
         return convertToDto(saved);
     }
 
@@ -38,7 +38,7 @@ public class EmployeeService {
         Employee employee = getById(employeeDTO.getUuid());
         copyToEntity(employeeDTO, employee);
         Employee saved = employeeRepository.save(employee);
-        messageService.sendMessage(new Message(saved.getUuid(), Status.UPDATED));
+        messageService.sendMessage(new Message(saved.getUuid(), EmployeeStatus.UPDATED));
         return convertToDto(saved);
     }
 
@@ -48,7 +48,7 @@ public class EmployeeService {
 
     public void deleteEmployee(@Valid UUID uuid) {
         employeeRepository.deleteById(uuid);
-        messageService.sendMessage(new Message(uuid, Status.DELETED));
+        messageService.sendMessage(new Message(uuid, EmployeeStatus.DELETED));
     }
 
     public EmployeeDTO getEmployeeById(@Valid UUID uuid) {
