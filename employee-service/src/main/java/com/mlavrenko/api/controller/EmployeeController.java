@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/employees-service/employee/", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/employee-service/employee/", produces = MediaType.APPLICATION_JSON_VALUE)
 public class EmployeeController {
     private final EmployeeService employeeService;
 

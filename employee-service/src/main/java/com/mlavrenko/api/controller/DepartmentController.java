@@ -18,7 +18,7 @@ public class DepartmentController {
         this.departmentService = departmentService;
     }
 
-    @PostMapping(value = "/api/department",
+    @PostMapping(value = "/employee-service/department",
         consumes = MediaType.APPLICATION_JSON_VALUE,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
