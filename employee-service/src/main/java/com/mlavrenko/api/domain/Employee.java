@@ -2,8 +2,14 @@ package com.mlavrenko.api.domain;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.*;
-import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
@@ -14,12 +20,12 @@ public class Employee {
     @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id", columnDefinition = "VARCHAR(255)", updatable = false, nullable = false)
     private UUID id;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, columnDefinition = "varchar(255) unique")
     private String email;
     @Column(nullable = false)
     private String fullName;
     @Column(nullable = false)
-    private Date birthDate;
+    private LocalDate birthDate;
     @ManyToOne(optional = false)
     @JoinColumn(name = "department_id", columnDefinition = "integer", referencedColumnName = "id")
     private Department department;
@@ -48,11 +54,11 @@ public class Employee {
         this.fullName = fullName;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 

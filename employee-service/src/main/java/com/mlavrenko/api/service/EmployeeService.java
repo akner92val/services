@@ -65,10 +65,8 @@ public class EmployeeService {
     public EmployeeDTO getEmployeeById(@Valid UUID uuid) {
         logger.info("Get employee by id={}", uuid);
         Employee byId = getById(uuid);
-        logger.info("Retrived entity={}", byId);
-        EmployeeDTO employeeDTO = convertToDto(byId);
-        logger.info("Retrived dto={}", employeeDTO);
-        return employeeDTO;
+        logger.debug("Retrieved: {}",byId);
+        return convertToDto(byId);
     }
 
     private void copyToEntity(@Valid EmployeeDTO employeeDTO, Employee employee) {
@@ -79,9 +77,13 @@ public class EmployeeService {
     private Employee convertToDomain(EmployeeDTO employeeDTO) {
         Employee employee = new Employee();
         BeanUtils.copyProperties(employeeDTO, employee, "department");
-        Department department = departmentService.getById(employeeDTO.getDepartment().getId()).orElseThrow(IllegalArgumentException::new);
+        Department department = getDepartment(employeeDTO.getDepartment());
         employee.setDepartment(department);
         return employee;
+    }
+
+    private Department getDepartment(DepartmentDTO department) {
+        return departmentService.getById(department.getId()).orElseThrow(IllegalArgumentException::new);
     }
 
     private EmployeeDTO convertToDto(Employee employee) {

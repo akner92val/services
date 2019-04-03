@@ -34,7 +34,6 @@ public class KafkaConfiguration {
         return new DefaultKafkaProducerFactory<>(config);
     }
 
-
     @Bean
     public KafkaTemplate<String, EmployeeEvent> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
