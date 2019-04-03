@@ -10,7 +10,7 @@ public class EmployeeDTO {
     private Date birthDate;
     private DepartmentDTO department;
 
-    public UUID getUuid() {
+    public UUID getId() {
         return id;
     }
 
@@ -48,5 +48,16 @@ public class EmployeeDTO {
 
     public void setDepartment(DepartmentDTO department) {
         this.department = department;
+    }
+
+    @Override
+    public String toString() {
+        return "EmployeeDTO{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", birthDate=" + birthDate +
+                ", department=" + department +
+                '}';
     }
 }

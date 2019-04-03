@@ -36,13 +36,13 @@ public class EmployeeController {
         return employeeService.updateEmployee(employeeDTO);
     }
 
-    @DeleteMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void delete(@Valid @RequestBody EmployeeDTO employeeDTO) {
-        employeeService.deleteEmployee(employeeDTO.getUuid());
+    @DeleteMapping("{id}")
+    public void delete(@Valid @PathVariable("id") UUID uuid) {
+        employeeService.deleteEmployee(uuid);
     }
 
     @GetMapping("{id}")
-    EmployeeDTO getById(@Valid @PathVariable("id") UUID uuid) {
+    public EmployeeDTO getById(@Valid @PathVariable("id") UUID uuid) {
         return employeeService.getEmployeeById(uuid);
     }
 }

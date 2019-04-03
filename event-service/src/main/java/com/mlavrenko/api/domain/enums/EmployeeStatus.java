@@ -1,5 +1,5 @@
 package com.mlavrenko.api.domain.enums;
 
-public enum EmployeeState {
+public enum EmployeeStatus {
     CREATED, UPDATED, DELETED
 }

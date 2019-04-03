@@ -24,7 +24,7 @@ public class Employee {
     @JoinColumn(name = "department_id", columnDefinition = "integer", referencedColumnName = "id")
     private Department department;
 
-    public UUID getUuid() {
+    public UUID getId() {
         return id;
     }
 
@@ -62,5 +62,16 @@ public class Employee {
 
     public void setDepartment(Department department) {
         this.department = department;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", birthDate=" + birthDate +
+                ", department=" + department +
+                '}';
     }
 }

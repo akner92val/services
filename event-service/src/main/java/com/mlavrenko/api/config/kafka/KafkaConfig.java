@@ -19,7 +19,7 @@ public class KafkaConfig {
     @Value("${notification.kafka.bootstrap.servers}")
     private String kafkaBootstrapServers;
 
-    @Value("${spring.application.name:event-service}")
+    @Value("${spring.application.name}")
     private String appName;
 
     @Bean

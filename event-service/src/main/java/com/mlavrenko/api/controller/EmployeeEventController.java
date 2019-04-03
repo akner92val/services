@@ -2,13 +2,14 @@ package com.mlavrenko.api.controller;
 
 import com.mlavrenko.api.dto.EmployeeEventDTO;
 import com.mlavrenko.api.service.EmployeeEventService;
-import java.util.List;
-import java.util.UUID;
-import javax.validation.Valid;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
+import java.util.List;
+import java.util.UUID;
 
 @RestController
 public class EmployeeEventController {
