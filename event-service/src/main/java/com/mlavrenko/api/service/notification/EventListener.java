@@ -7,6 +7,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 @Service
+@ConditionalOnProperty(value = "notification.enabled", havingValue = "true")
 class EventListener {
     private Logger log = LoggerFactory.getLogger(getClass());
     private EventConsumerService consumerService;

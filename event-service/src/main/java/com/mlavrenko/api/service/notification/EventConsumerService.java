@@ -3,9 +3,11 @@ package com.mlavrenko.api.service.notification;
 import com.mlavrenko.api.dto.EmployeeEventDTO;
 import com.mlavrenko.api.service.EmployeeEventService;
 import com.mlavrenko.api.service.notification.helper.JsonHelper;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 @Service
+@ConditionalOnProperty(value = "notification.enabled", havingValue = "true")
 class EventConsumerService {
     private final EmployeeEventService employeeEventService;
     private final JsonHelper jsonHelper;
