@@ -2,10 +2,12 @@ package com.mlavrenko.api.notification;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
+@ConditionalOnProperty(value = "notification.enabled", havingValue = "true")
 public class KafkaEventProducer {
     private final Logger log = LoggerFactory.getLogger(getClass());
 

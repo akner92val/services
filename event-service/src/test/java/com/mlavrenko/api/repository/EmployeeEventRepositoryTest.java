@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.UUID;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 @DisplayName("employee event repository test")
 @SpringBootTest
@@ -35,11 +36,15 @@ class EmployeeEventRepositoryTest {
         UUID uuid = UUID.randomUUID();
         EmployeeEvent first = getEmployeeEvent(uuid, EmployeeStatus.CREATED);
         EmployeeEvent second = getEmployeeEvent(uuid, EmployeeStatus.UPDATED);
-        employeeEventRepository.saveAll(Arrays.asList(second, first));
+        employeeEventRepository.saveAll(Arrays.asList(first, second));
 
         List<EmployeeEvent> allByCriteria = employeeEventRepository.findAllByEmployeeIdOrderByEventCreatedAsc(uuid);
 
-        assertThat(allByCriteria).containsExactly(first, second);
+        assertAll(
+                () -> assertThat(allByCriteria).hasSize(2),
+                () -> assertThat(allByCriteria.get(0)).isEqualToIgnoringGivenFields(first, "eventCreated"),
+                () -> assertThat(allByCriteria.get(1)).isEqualToIgnoringGivenFields(second, "eventCreated")
+        );
     }
 
     private EmployeeEvent getEmployeeEvent(UUID uuid, EmployeeStatus status) {

@@ -1,13 +1,13 @@
 package com.mlavrenko.api.dto;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.UUID;
 
 public class EmployeeDTO {
     private UUID id;
     private String email;
     private String fullName;
-    private Date birthDate;
+    private LocalDate birthDate;
     private DepartmentDTO department;
 
     public UUID getId() {
@@ -34,11 +34,11 @@ public class EmployeeDTO {
         this.fullName = fullName;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 

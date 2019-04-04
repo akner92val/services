@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/employee-service/employee/", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/employee-service/employee", produces = MediaType.APPLICATION_JSON_VALUE)
 public class EmployeeController {
     private final EmployeeService employeeService;
 
@@ -36,12 +36,12 @@ public class EmployeeController {
         return employeeService.updateEmployee(employeeDTO);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public void delete(@Valid @PathVariable("id") UUID uuid) {
         employeeService.deleteEmployee(uuid);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public EmployeeDTO getById(@Valid @PathVariable("id") UUID uuid) {
         return employeeService.getEmployeeById(uuid);
     }
