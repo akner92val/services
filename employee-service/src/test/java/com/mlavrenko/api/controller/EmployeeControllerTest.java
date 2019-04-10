@@ -60,6 +60,7 @@ class EmployeeControllerTest {
                 .accept(MediaType.APPLICATION_JSON_VALUE)
                 .content(value)
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
                 .andExpect(status().isCreated())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON_VALUE))
                 .andReturn().getResponse().getContentAsString();

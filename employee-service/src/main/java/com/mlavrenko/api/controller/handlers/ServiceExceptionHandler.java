@@ -1,14 +1,15 @@
 package com.mlavrenko.api.controller.handlers;
 
-import org.hibernate.HibernateException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.PersistenceException;
 import javax.validation.ValidationException;
 
 @ControllerAdvice
@@ -22,7 +23,7 @@ public class ServiceExceptionHandler {
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler({HibernateException.class, ValidationException.class, IllegalArgumentException.class})
+    @ExceptionHandler({PersistenceException.class, DataAccessException.class, ValidationException.class, IllegalArgumentException.class})
     public void handleBadRequest(Exception e) {
         logger.error("Not valid entity", e);
     }

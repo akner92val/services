@@ -1,0 +1,102 @@
+{
+	"variables": [],
+	"info": {
+		"name": "services",
+		"_postman_id": "a0b4e2e9-a584-6e11-d405-04c34d193df9",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "department",
+			"description": "",
+			"item": [
+				{
+					"name": "create department",
+					"request": {
+						"url": "localhost:8080/employee-service/department/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"id\":null,\n\"name\":\"department\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "employee",
+			"description": "",
+			"item": [
+				{
+					"name": "create employee",
+					"request": {
+						"url": "localhost:8080/employee-service/employee/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": null,\n  \"email\": \"email@gmail.com\",\n  \"fullName\": \"Name Surname\",\n  \"birthDate\": \"2019-04-10\",\n  \"department\" : {\n    \"id\": 1,\n    \"name\": \"department\"\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "get employee by id",
+					"request": {
+						"url": "localhost:8080/employee-service/employee/bdd5b0f7-6a7a-4cae-82b8-dfd84362ad63",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "delete employee by id",
+					"request": {
+						"url": "localhost:8080/employee-service/employee/a85afd43-bc54-4723-a598-6b18f0ea1f6e",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "events",
+			"description": "",
+			"item": [
+				{
+					"name": "get employee events by id",
+					"request": {
+						"url": "localhost:8081/event-service/employee-events/a85afd43-bc54-4723-a598-6b18f0ea1f6e",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
